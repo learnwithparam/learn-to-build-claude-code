@@ -17,7 +17,7 @@
 ## How to Run
 
 ```bash
-make noob
+make 01-agent-loop
 # or
 uv run python 01-agent-loop/agent.py
 ```
@@ -41,7 +41,7 @@ The asterisk (*) means "repeat until done." That's the whole secret.
 
 | File | Lines | Description |
 |------|-------|-------------|
-| [`agent.py`](./agent.py) | 17 | The complete agent |
+| [`agent.py`](./agent.py) | ~130 lines (17-line core loop) | The complete agent |
 
 ## Next Module
 

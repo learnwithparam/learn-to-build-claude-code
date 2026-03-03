@@ -6,8 +6,8 @@
 
 1. Open `agent.py` and identify:
    - Where is the **agent loop**? (the `while` loop)
-   - Where is the **tool definition**? (the `T` variable)
-   - Where does the model **decide to stop**? (the `stop_reason` check)
+   - Where is the **tool definition**? (the `TOOLS` variable)
+   - Where does the model **decide to stop**? (the `tool_calls` check)
 2. Write down in your own words: what does each line do?
 
 **Checkpoint**: You should be able to explain the flow: user input → model call → tool execution → loop back.
@@ -18,7 +18,7 @@
 
 **Goal**: See the agent in action and understand the loop flow.
 
-1. Run the agent: `make noob`
+1. Run the agent: `make 01-agent-loop`
 2. Try these prompts and watch the yellow `$` commands:
    ```
    >> list all files in the current directory
@@ -38,7 +38,7 @@
 
 **Goal**: See how the system prompt shapes agent behavior.
 
-1. In `agent.py`, find the system prompt (the `S` variable)
+1. In `agent.py`, find the system prompt (the `SYSTEM_PROMPT` variable)
 2. Change it to make the agent behave differently. Try:
    - `"You are a pirate CLI agent. Talk like a pirate while solving problems."`
    - `"You are a cautious agent. Always explain what you're about to do before doing it."`

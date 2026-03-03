@@ -375,11 +375,17 @@ Complete the task and return a clear, concise summary."""
         {"role": "user", "content": prompt}
     ]
 
+    MAX_TURNS = 30
     print(f"  [{agent_type}] {description}")
     start = time.time()
     tool_count = 0
+    turns = 0
 
     while True:
+        turns += 1
+        if turns > MAX_TURNS:
+            return f"Error: Subagent hit {MAX_TURNS}-turn safety limit."
+
         response = completion(
             model=MODEL,
             messages=sub_messages,

@@ -6,11 +6,13 @@ Every AI coding agent — Claude Code, Cursor, Codex CLI, Devin — is built on 
 
 ```python
 while True:
-    response = model(messages, tools)
-    if response.stop_reason != "tool_use":
-        return response.text
-    results = execute(response.tool_calls)
-    messages.append(results)
+    response = completion(model=MODEL, messages=messages, tools=TOOLS)
+    message = response.choices[0].message
+    if not message.tool_calls:
+        return message.content
+    for tc in message.tool_calls:
+        result = execute(tc.function.name, tc.function.arguments)
+        messages.append({"role": "tool", "tool_call_id": tc.id, "content": result})
 ```
 
 That's it. The model calls tools until it's done. Everything else is refinement.

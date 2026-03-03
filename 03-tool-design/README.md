@@ -17,7 +17,7 @@
 ## How to Run
 
 ```bash
-make intermediate
+make 03-tool-design
 # or
 uv run python 03-tool-design/agent.py
 ```

@@ -17,7 +17,7 @@
 ## How to Run
 
 ```bash
-make advanced
+make 04-structured-planning
 # or
 uv run python 04-structured-planning/agent.py
 ```

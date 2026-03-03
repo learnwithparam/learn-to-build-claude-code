@@ -23,3 +23,13 @@ env/
 
 # uv
 uv.lock
+
+# Test artifacts (tests.py E2E output)
+e2e_*.txt
+e2e_*.py
+verify_*.txt
+
+# Runtime artifacts
+*.jsonl
+.tasks/
+.team/

@@ -54,17 +54,21 @@ def run_task(description, prompt, agent_type):
     # 1. Agent-specific system prompt
     # 2. Filtered tools (explore can't write)
     # 3. Isolated history (KEY: no parent context!)
-    sub_messages = [{"role": "user", "content": prompt}]
-    
+    sub_messages = [
+        {"role": "system", "content": sub_system},
+        {"role": "user", "content": prompt}
+    ]
+
     # 4. Same agent loop
     while True:
-        response = client.messages.create(...)
-        if response.stop_reason != "tool_use":
+        response = completion(model=MODEL, messages=sub_messages, tools=sub_tools)
+        message = response.choices[0].message
+        if not message.tool_calls:
             break
-        # Execute tools...
-    
+        # Execute tools, append tool results...
+
     # 5. Return ONLY final text
-    return extract_final_text(response)
+    return message.content or ""
 ```
 
 ### Typical Flow

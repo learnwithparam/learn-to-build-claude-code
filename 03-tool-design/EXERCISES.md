@@ -7,15 +7,18 @@
 1. Add a 5th tool called `grep_file` with this schema:
    ```python
    {
-       "name": "grep_file",
-       "description": "Search for a pattern in a file. Returns matching lines.",
-       "input_schema": {
-           "type": "object",
-           "properties": {
-               "path": {"type": "string", "description": "File to search"},
-               "pattern": {"type": "string", "description": "Text pattern to find"}
-           },
-           "required": ["path", "pattern"]
+       "type": "function",
+       "function": {
+           "name": "grep_file",
+           "description": "Search for a pattern in a file. Returns matching lines.",
+           "parameters": {
+               "type": "object",
+               "properties": {
+                   "path": {"type": "string", "description": "File to search"},
+                   "pattern": {"type": "string", "description": "Text pattern to find"}
+               },
+               "required": ["path", "pattern"]
+           }
        }
    }
    ```

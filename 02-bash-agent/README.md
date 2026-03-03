@@ -17,7 +17,7 @@
 ## How to Run
 
 ```bash
-make beginner
+make 02-bash-agent
 # or
 uv run python 02-bash-agent/agent.py
 

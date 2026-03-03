@@ -39,21 +39,21 @@ Claude Code has ~20 tools. But 4 cover 90% of use cases:
 ```python
 def agent_loop(messages):
     while True:
-        response = client.messages.create(
-            model=MODEL, system=SYSTEM,
-            messages=messages, tools=TOOLS
-        )
+        response = completion(model=MODEL, messages=messages, tools=TOOLS)
+        message = response.choices[0].message
+        messages.append(message.model_dump(exclude_unset=True))
 
-        if response.stop_reason != "tool_use":
+        if not message.tool_calls:
             return messages  # Done!
 
-        results = []
-        for tc in response.tool_calls:
-            output = execute_tool(tc.name, tc.input)
-            results.append({"type": "tool_result", ...})
-
-        messages.append({"role": "assistant", ...})
-        messages.append({"role": "user", "content": results})
+        for tc in message.tool_calls:
+            args = json.loads(tc.function.arguments)
+            output = execute_tool(tc.function.name, args)
+            messages.append({
+                "role": "tool",
+                "tool_call_id": tc.id,
+                "content": output
+            })
 ```
 
 **Why this works:**
@@ -78,7 +78,7 @@ This prevents the model from accidentally (or intentionally) reading/writing fil
 The only "configuration" needed:
 
 ```python
-SYSTEM = f"""You are a coding agent at {WORKDIR}.
+SYSTEM_PROMPT = f"""You are a coding agent at {WORKDIR}.
 
 Rules:
 - Prefer tools over prose. Act, don't just explain.

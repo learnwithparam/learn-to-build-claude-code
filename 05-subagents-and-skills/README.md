@@ -15,11 +15,13 @@
 - Completed [04: Structured Planning](../04-structured-planning/README.md)
 - Understand TodoManager and structured planning
 
+> **Why the jump?** Level 04 was ~310 lines. This level is ~780 lines — a significant leap. That's intentional: subagents and skills are the two mechanisms that turn a capable agent into a production-grade one. Part 1 (subagent.py, ~620 lines) can be studied on its own first if you want to take it in stages.
+
 ## How to Run
 
 ```bash
 # Full agent with subagents + skills
-make expert
+make 05-subagents-and-skills
 # or
 uv run python 05-subagents-and-skills/agent.py
 
@@ -68,8 +70,8 @@ Skills = How model KNOWS to do   (PDF processing, MCP dev)
 
 | File | Lines | Description |
 |------|-------|-------------|
-| [`subagent.py`](./subagent.py) | ~620 | Part 1: Subagent mechanism |
-| [`agent.py`](./agent.py) | ~780 | Part 2: Full agent with skills |
+| [`subagent.py`](./subagent.py) | ~520 | Part 1: Subagent mechanism |
+| [`agent.py`](./agent.py) | ~690 | Part 2: Full agent with skills |
 
 ## Workshop Complete! 🎉
 
