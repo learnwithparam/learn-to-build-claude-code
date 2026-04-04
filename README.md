@@ -1,6 +1,10 @@
 # Build Your Own Claude Code Workshop
 
+![AI Bootcamp Open Graph preview](https://www.learnwithparam.com/ai-bootcamp/opengraph-image)
+
 Learn how modern AI coding agents work by building one from scratch — from a 17-line agent to a full production-grade system with teams and worktree isolation.
+
+> Regional pricing is available for eligible learners, with discounts of up to 60% in supported regions. Start here: https://www.learnwithparam.com/ai-bootcamp
 
 ## 🎯 Workshop Modules
 
